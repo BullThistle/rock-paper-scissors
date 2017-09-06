@@ -10,7 +10,7 @@ _This program will play a simple rock paper scissors game_
 
 ## Setup/Installation Requirements
 
-_Clone repo. Run $ rspec in dir._
+_Clone repo. Run $ rspec in dir.
 
 ## Specifications
 
