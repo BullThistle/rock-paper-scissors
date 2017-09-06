@@ -40,6 +40,14 @@ end
 game = true
 
 
+selection = rand(3)
+if selection == 0
+  selection = "rock"
+elsif selection == 1
+  selection = "scissors"
+else
+  selection = "paper"
+end
 
 
 rock = Rock.new
@@ -49,15 +57,35 @@ scissors = Scissors.new
 
 puts "Enter rock, paper, or scissors"
 choice = gets
-# binding.pry
-if (rock.beats(choice) == "win")
-  game = "win"
-elsif(rock.beats(choice) == "tie")
-  game = "tie"
-else
-  game = "lose"
+if selection == "rock"
+
+  if (rock.beats(choice) == "win")
+    game = "win"
+  elsif(rock.beats(choice) == "tie")
+    game = "tie"
+  else
+    game = "lose"
+  end
+
+  elsif selection == "scissors"
+    if (scissors.beats(choice) == "win")
+      game = "win"
+    elsif(scissors.beats(choice) == "tie")
+      game = "tie"
+    else
+      game = "lose"
+    end
+
+  elsif selection == "paper"
+    if (paper.beats(choice) == "win")
+      game = "win"
+    elsif(paper.beats(choice) == "tie")
+      game = "tie"
+    else
+      game = "lose"
+    end
 end
 
-puts "The computer chose rock and you chose " + choice
+puts "The computer chose " + selection + " and you chose " + choice
 
 puts "You " + game + "!"
