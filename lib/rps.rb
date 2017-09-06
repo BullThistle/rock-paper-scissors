@@ -34,9 +34,7 @@ else
   selection_word = "scissors"
 end
 
-
 human = Player.new(choice_num)
-comp = Player.new(selection)
 
 game = human.beats(selection)
 
