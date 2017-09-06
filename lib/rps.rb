@@ -1,91 +1,43 @@
-require "pry"
-
-class Rock
+class Player
+  def initialize(choice)
+    @choice = choice
+  end
   def beats(arg)
-    if arg == "paper\n"
+    if ((@choice == 0 && arg == 2) || (@choice == 1 && arg == 0) || (@choice == 2 && arg == 1))
       return "win"
-    elsif arg == "rock\n"
+    elsif(@choice == arg)
       return "tie"
     else
       return "lose"
     end
   end
 end
-
-class Paper
-  def beats(arg)
-    if arg == "scissors\n"
-      return "win"
-    elsif arg == "paper\n"
-      return "tie"
-    else
-      return "lose"
-    end
-  end
-end
-
-class Scissors
-  def beats(arg)
-    if arg == "rock\n"
-      return "win"
-    elsif arg == "scissors\n"
-      return "tie"
-    else
-      return "lose"
-    end
-  end
-end
-
-
-game = true
-
-
-selection = rand(3)
-if selection == 0
-  selection = "rock"
-elsif selection == 1
-  selection = "scissors"
-else
-  selection = "paper"
-end
-
-
-rock = Rock.new
-paper = Paper.new
-scissors = Scissors.new
-
 
 puts "Enter rock, paper, or scissors"
-choice = gets
-if selection == "rock"
+choice = gets.chomp
 
-  if (rock.beats(choice) == "win")
-    game = "win"
-  elsif(rock.beats(choice) == "tie")
-    game = "tie"
-  else
-    game = "lose"
-  end
+selection = rand(3)
 
-  elsif selection == "scissors"
-    if (scissors.beats(choice) == "win")
-      game = "win"
-    elsif(scissors.beats(choice) == "tie")
-      game = "tie"
-    else
-      game = "lose"
-    end
-
-  elsif selection == "paper"
-    if (paper.beats(choice) == "win")
-      game = "win"
-    elsif(paper.beats(choice) == "tie")
-      game = "tie"
-    else
-      game = "lose"
-    end
+if choice == "rock"
+  choice_num = 0
+elsif choice == "paper"
+  choice_num = 1
+else
+  choice_num = 2
 end
 
-puts "The computer chose " + selection + " and you chose " + choice
+if selection == 0
+  selection_word = "rock"
+elsif selection == 1
+  selection_word = "paper"
+else
+  selection_word = "scissors"
+end
 
-puts "You " + game + "!"
+
+human = Player.new(choice_num)
+comp = Player.new(selection)
+
+game = human.beats(selection)
+
+puts "You chose " + choice + " and the computer chose " + selection_word + ". You " + game + "!"

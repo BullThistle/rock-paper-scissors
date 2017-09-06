@@ -3,10 +3,7 @@ require 'rps'
 require 'pry'
 
 describe('#rps')do
-  let(:rock) {Rock.new}
-  let(:paper) {Paper.new}
-  let(:scissors) {Scissors.new}
-
+  let(:human) {Player.new}
 
   it("returns true if rock is the object and scissors is the argument") do
     expect(rock.beats("scissors")).to(eq(true))
